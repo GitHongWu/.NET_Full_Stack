@@ -1,0 +1,13 @@
+D:\Temp\Antra\Day11\Demo\DemoTask\bin\Debug\netcoreapp3.1\DemoTask.exe
+D:\Temp\Antra\Day11\Demo\DemoTask\bin\Debug\netcoreapp3.1\DemoTask.deps.json
+D:\Temp\Antra\Day11\Demo\DemoTask\bin\Debug\netcoreapp3.1\DemoTask.runtimeconfig.json
+D:\Temp\Antra\Day11\Demo\DemoTask\bin\Debug\netcoreapp3.1\DemoTask.runtimeconfig.dev.json
+D:\Temp\Antra\Day11\Demo\DemoTask\bin\Debug\netcoreapp3.1\DemoTask.dll
+D:\Temp\Antra\Day11\Demo\DemoTask\bin\Debug\netcoreapp3.1\DemoTask.pdb
+D:\Temp\Antra\Day11\Demo\DemoTask\obj\Debug\netcoreapp3.1\DemoTask.AssemblyInfoInputs.cache
+D:\Temp\Antra\Day11\Demo\DemoTask\obj\Debug\netcoreapp3.1\DemoTask.AssemblyInfo.cs
+D:\Temp\Antra\Day11\Demo\DemoTask\obj\Debug\netcoreapp3.1\DemoTask.csproj.CoreCompileInputs.cache
+D:\Temp\Antra\Day11\Demo\DemoTask\obj\Debug\netcoreapp3.1\DemoTask.dll
+D:\Temp\Antra\Day11\Demo\DemoTask\obj\Debug\netcoreapp3.1\DemoTask.pdb
+D:\Temp\Antra\Day11\Demo\DemoTask\obj\Debug\netcoreapp3.1\DemoTask.genruntimeconfig.cache
+D:\Temp\Antra\Day11\Demo\DemoTask\obj\Debug\netcoreapp3.1\DemoTask.csprojAssemblyReference.cache

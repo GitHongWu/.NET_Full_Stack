@@ -1,0 +1,12 @@
+D:\Temp\Antra\Day11\Demo\Exercise7\bin\Debug\netcoreapp3.1\Exercise7.exe
+D:\Temp\Antra\Day11\Demo\Exercise7\bin\Debug\netcoreapp3.1\Exercise7.deps.json
+D:\Temp\Antra\Day11\Demo\Exercise7\bin\Debug\netcoreapp3.1\Exercise7.runtimeconfig.json
+D:\Temp\Antra\Day11\Demo\Exercise7\bin\Debug\netcoreapp3.1\Exercise7.runtimeconfig.dev.json
+D:\Temp\Antra\Day11\Demo\Exercise7\bin\Debug\netcoreapp3.1\Exercise7.dll
+D:\Temp\Antra\Day11\Demo\Exercise7\bin\Debug\netcoreapp3.1\Exercise7.pdb
+D:\Temp\Antra\Day11\Demo\Exercise7\obj\Debug\netcoreapp3.1\Exercise7.AssemblyInfoInputs.cache
+D:\Temp\Antra\Day11\Demo\Exercise7\obj\Debug\netcoreapp3.1\Exercise7.AssemblyInfo.cs
+D:\Temp\Antra\Day11\Demo\Exercise7\obj\Debug\netcoreapp3.1\Exercise7.csproj.CoreCompileInputs.cache
+D:\Temp\Antra\Day11\Demo\Exercise7\obj\Debug\netcoreapp3.1\Exercise7.dll
+D:\Temp\Antra\Day11\Demo\Exercise7\obj\Debug\netcoreapp3.1\Exercise7.pdb
+D:\Temp\Antra\Day11\Demo\Exercise7\obj\Debug\netcoreapp3.1\Exercise7.genruntimeconfig.cache

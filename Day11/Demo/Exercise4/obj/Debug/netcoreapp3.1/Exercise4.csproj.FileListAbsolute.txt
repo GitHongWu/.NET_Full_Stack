@@ -1,0 +1,13 @@
+D:\Temp\Antra\Day11\Demo\Exercise4\obj\Debug\netcoreapp3.1\Exercise4.csprojAssemblyReference.cache
+D:\Temp\Antra\Day11\Demo\Exercise4\obj\Debug\netcoreapp3.1\Exercise4.AssemblyInfoInputs.cache
+D:\Temp\Antra\Day11\Demo\Exercise4\obj\Debug\netcoreapp3.1\Exercise4.AssemblyInfo.cs
+D:\Temp\Antra\Day11\Demo\Exercise4\obj\Debug\netcoreapp3.1\Exercise4.csproj.CoreCompileInputs.cache
+D:\Temp\Antra\Day11\Demo\Exercise4\bin\Debug\netcoreapp3.1\Exercise4.exe
+D:\Temp\Antra\Day11\Demo\Exercise4\bin\Debug\netcoreapp3.1\Exercise4.deps.json
+D:\Temp\Antra\Day11\Demo\Exercise4\bin\Debug\netcoreapp3.1\Exercise4.runtimeconfig.json
+D:\Temp\Antra\Day11\Demo\Exercise4\bin\Debug\netcoreapp3.1\Exercise4.runtimeconfig.dev.json
+D:\Temp\Antra\Day11\Demo\Exercise4\bin\Debug\netcoreapp3.1\Exercise4.dll
+D:\Temp\Antra\Day11\Demo\Exercise4\bin\Debug\netcoreapp3.1\Exercise4.pdb
+D:\Temp\Antra\Day11\Demo\Exercise4\obj\Debug\netcoreapp3.1\Exercise4.dll
+D:\Temp\Antra\Day11\Demo\Exercise4\obj\Debug\netcoreapp3.1\Exercise4.pdb
+D:\Temp\Antra\Day11\Demo\Exercise4\obj\Debug\netcoreapp3.1\Exercise4.genruntimeconfig.cache
