@@ -1,0 +1,13 @@
+D:\Temp\Antra\Day13\Lab3\Exercise2\bin\Debug\netcoreapp3.1\Exercise2.exe
+D:\Temp\Antra\Day13\Lab3\Exercise2\bin\Debug\netcoreapp3.1\Exercise2.deps.json
+D:\Temp\Antra\Day13\Lab3\Exercise2\bin\Debug\netcoreapp3.1\Exercise2.runtimeconfig.json
+D:\Temp\Antra\Day13\Lab3\Exercise2\bin\Debug\netcoreapp3.1\Exercise2.runtimeconfig.dev.json
+D:\Temp\Antra\Day13\Lab3\Exercise2\bin\Debug\netcoreapp3.1\Exercise2.dll
+D:\Temp\Antra\Day13\Lab3\Exercise2\bin\Debug\netcoreapp3.1\Exercise2.pdb
+D:\Temp\Antra\Day13\Lab3\Exercise2\obj\Debug\netcoreapp3.1\Exercise2.csprojAssemblyReference.cache
+D:\Temp\Antra\Day13\Lab3\Exercise2\obj\Debug\netcoreapp3.1\Exercise2.AssemblyInfoInputs.cache
+D:\Temp\Antra\Day13\Lab3\Exercise2\obj\Debug\netcoreapp3.1\Exercise2.AssemblyInfo.cs
+D:\Temp\Antra\Day13\Lab3\Exercise2\obj\Debug\netcoreapp3.1\Exercise2.csproj.CoreCompileInputs.cache
+D:\Temp\Antra\Day13\Lab3\Exercise2\obj\Debug\netcoreapp3.1\Exercise2.dll
+D:\Temp\Antra\Day13\Lab3\Exercise2\obj\Debug\netcoreapp3.1\Exercise2.pdb
+D:\Temp\Antra\Day13\Lab3\Exercise2\obj\Debug\netcoreapp3.1\Exercise2.genruntimeconfig.cache
