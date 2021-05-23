@@ -1,0 +1,13 @@
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\bin\Debug\netcoreapp3.1\NewLanguageFeatures.exe
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\bin\Debug\netcoreapp3.1\NewLanguageFeatures.deps.json
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\bin\Debug\netcoreapp3.1\NewLanguageFeatures.runtimeconfig.json
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\bin\Debug\netcoreapp3.1\NewLanguageFeatures.runtimeconfig.dev.json
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\bin\Debug\netcoreapp3.1\NewLanguageFeatures.dll
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\bin\Debug\netcoreapp3.1\NewLanguageFeatures.pdb
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\obj\Debug\netcoreapp3.1\NewLanguageFeatures.csprojAssemblyReference.cache
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\obj\Debug\netcoreapp3.1\NewLanguageFeatures.AssemblyInfoInputs.cache
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\obj\Debug\netcoreapp3.1\NewLanguageFeatures.AssemblyInfo.cs
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\obj\Debug\netcoreapp3.1\NewLanguageFeatures.csproj.CoreCompileInputs.cache
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\obj\Debug\netcoreapp3.1\NewLanguageFeatures.dll
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\obj\Debug\netcoreapp3.1\NewLanguageFeatures.pdb
+D:\Temp\Antra\Day13\NewLanguageFeatures\NewLanguageFeatures\obj\Debug\netcoreapp3.1\NewLanguageFeatures.genruntimeconfig.cache
