@@ -1,0 +1,9 @@
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\bin\Debug\netcoreapp3.1\DataModel.deps.json
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\bin\Debug\netcoreapp3.1\DataModel.dll
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\bin\Debug\netcoreapp3.1\DataModel.pdb
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\obj\Debug\netcoreapp3.1\DataModel.csprojAssemblyReference.cache
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\obj\Debug\netcoreapp3.1\DataModel.AssemblyInfoInputs.cache
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\obj\Debug\netcoreapp3.1\DataModel.AssemblyInfo.cs
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\obj\Debug\netcoreapp3.1\DataModel.csproj.CoreCompileInputs.cache
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\obj\Debug\netcoreapp3.1\DataModel.dll
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataModel\obj\Debug\netcoreapp3.1\DataModel.pdb

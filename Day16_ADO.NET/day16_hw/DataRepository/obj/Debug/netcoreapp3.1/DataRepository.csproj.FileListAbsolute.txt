@@ -1,0 +1,12 @@
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\bin\Debug\netcoreapp3.1\DataModel.dll
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\obj\Debug\netcoreapp3.1\DataRepository.csprojAssemblyReference.cache
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\obj\Debug\netcoreapp3.1\DataRepository.AssemblyInfoInputs.cache
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\obj\Debug\netcoreapp3.1\DataRepository.AssemblyInfo.cs
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\bin\Debug\netcoreapp3.1\DataRepository.deps.json
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\bin\Debug\netcoreapp3.1\DataRepository.dll
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\bin\Debug\netcoreapp3.1\DataRepository.pdb
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\bin\Debug\netcoreapp3.1\DataModel.pdb
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\obj\Debug\netcoreapp3.1\DataRepository.csproj.CoreCompileInputs.cache
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\obj\Debug\netcoreapp3.1\DataRepository.csproj.CopyComplete
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\obj\Debug\netcoreapp3.1\DataRepository.dll
+D:\Temp\Antra\Day16_ADO.NET\day16_hw\DataRepository\obj\Debug\netcoreapp3.1\DataRepository.pdb
