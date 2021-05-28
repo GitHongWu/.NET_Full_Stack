@@ -6,8 +6,11 @@ namespace MinionsClientApp
     {
         static void Main(string[] args)
         {
-            ManageVillains manageVillains = new ManageVillains();
-            manageVillains.Run();
+            Queries q = new Queries();
+            q.PrintAllMinionsByVillain();
+
+            Console.Write("\nEnter the Villain Id to print all Minions: ");
+            q.GetMinionsByVillainId(Convert.ToInt32(Console.ReadLine()));
         }
     }
 }
