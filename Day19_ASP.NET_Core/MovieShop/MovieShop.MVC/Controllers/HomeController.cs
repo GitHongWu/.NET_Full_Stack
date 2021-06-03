@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Controllers
 {
+    //public class Movie
+    //{
+    //    public int Id { get; set; }
+    //    public string Title { get; set; }
+    //}
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -24,6 +29,11 @@ namespace MovieShop.MVC.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult TopMovies()
         {
             return View();
         }
