@@ -13,3 +13,6 @@ D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\Infrastructure\obj\Debug\net5.0\Infra
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache

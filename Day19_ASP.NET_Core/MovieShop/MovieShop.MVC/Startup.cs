@@ -8,6 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApplicationCore.ServiceInterfaces;
+using Infrastructure.Services;
+using Microsoft.EntityFrameworkCore;
+using Infrastructure.Data;
 
 namespace MovieShop.MVC
 {
@@ -24,6 +28,15 @@ namespace MovieShop.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Telling our Container what class it needs to injection in the constructor for interface
+            // Registration of services for interfaces
+            services.AddScoped<IMovieService, MovieServiceTest>();
+
+            services.AddDbContext<MovieShopDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("MovieShopDbConnection"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,12 +61,12 @@ namespace MovieShop.MVC
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute(
-                //    name: "default",
-                //    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Account}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Account}/{action=Index}/{id?}");
             });
         }
     }
