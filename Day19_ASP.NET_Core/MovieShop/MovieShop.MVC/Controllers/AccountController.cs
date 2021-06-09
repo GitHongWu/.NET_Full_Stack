@@ -28,27 +28,39 @@ namespace MovieShop.MVC.Controllers
         }
 
         [HttpGet]
+        public IActionResult Login()
+        {
+            // show login in view, UserName, Passward
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(UserLoginRequestModel model)
+        {
+            //check for model validation on server also
+            if (ModelState.IsValid)
+            {
+                // save to database
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public IActionResult Index(int id = 0)
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        //[HttpGet]
+        //[HttpPost]
         //public IActionResult Index()
         //{
-        //    return RedirectToAction("Index");
+        //    return View();
         //}
-
-        [HttpPost]
-        public IActionResult Login()
-        {
-            return View();
-        }
     }
 }

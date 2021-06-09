@@ -48,7 +48,6 @@ D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movies\Genre.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movies\TopRevenue.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Account\Index.cshtml.g.cs
-D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Admin\Movie.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Admin\Purchases.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Cast\Cast.cshtml.g.cs
@@ -164,3 +163,5 @@ D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movies\Details.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Home\Index_1.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\bin\Debug\net5.0\AutoMapper.dll
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Admin\CreateMovie.cshtml.g.cs
