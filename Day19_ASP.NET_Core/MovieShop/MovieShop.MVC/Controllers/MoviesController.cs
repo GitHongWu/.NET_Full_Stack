@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ApplicationCore.Models.Response;
 using ApplicationCore.ServiceInterfaces;
-
+using System.Threading.Tasks;
 
 namespace MovieShop.MVC.Controllers
 {
@@ -41,6 +41,13 @@ namespace MovieShop.MVC.Controllers
         public IActionResult Genre(int id)
         {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var movie = await _movieService.GetMovieDetailsById(id);
+            return View(movie);
         }
     }
 }

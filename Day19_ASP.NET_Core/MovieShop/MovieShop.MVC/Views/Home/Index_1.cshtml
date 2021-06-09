@@ -1,0 +1,25 @@
+﻿@model List<ApplicationCore.Models.Response.MovieCardResponseModel>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>
+    @ViewBag.PageTitle
+</h2>
+
+<h3>
+    Total Movies : @ViewBag.MoviesCount
+</h3>
+
+<h3>
+    @ViewData["MyCustomData"]
+</h3>
+
+@foreach (var movie in Model)
+{
+    <div>
+        @movie.Title
+    </div>
+}

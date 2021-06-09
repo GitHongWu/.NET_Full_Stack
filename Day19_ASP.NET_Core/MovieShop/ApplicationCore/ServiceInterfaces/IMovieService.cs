@@ -10,7 +10,7 @@ namespace ApplicationCore.ServiceInterfaces
     public interface IMovieService
     {
         //method for getting top 30 highest movies
-        List<MovieCardResponseModel> GetTopRevenueMovies();
-        MovieDetailsReposonseModel GetMovieDetailsById(int id);
+        Task<List<MovieCardResponseModel>> GetTopRevenueMovies();
+        Task<MovieDetailsResponseModel> GetMovieDetailsById(int id);
     }
 }

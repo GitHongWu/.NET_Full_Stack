@@ -44,6 +44,7 @@ namespace Infrastructure.Data
         }
 
         public DbSet<Genre> Genres { get; set; }
+        //public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Cast> Casts { get; set; }
