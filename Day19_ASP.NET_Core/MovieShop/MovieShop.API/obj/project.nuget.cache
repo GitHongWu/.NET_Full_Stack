@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "DApk/9AEyiIzgkgjzWLxLMk+Cv7TKtipbfGxKP5QuKl2hLP9MSjy5XYtBXEtwCoU3lsJ8OT0Chp3Cfc6WmWNyQ==",
+  "dgSpecHash": "stt7HlLlcrB7skVW6JHAyxsGAM22l4z9ubDmpuwyngnX7L6yqbp79xIodZ7YRhMRw2Q2jmZRHIUynIgOWs91Tg==",
   "success": true,
   "projectFilePath": "D:\\Temp\\Antra\\Day19_ASP.NET_Core\\MovieShop\\MovieShop.API\\MovieShop.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hongc\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\hongc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\hongc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.7\\microsoft.aspnetcore.cryptography.internal.5.0.7.nupkg.sha512",
+    "C:\\Users\\hongc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.7\\microsoft.aspnetcore.cryptography.keyderivation.5.0.7.nupkg.sha512",
     "C:\\Users\\hongc\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\hongc\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\hongc\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
