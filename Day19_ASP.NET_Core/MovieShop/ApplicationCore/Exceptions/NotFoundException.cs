@@ -15,6 +15,7 @@ namespace ApplicationCore.Exceptions
 
         public NotFoundException(string message) : base(message)
         {
+
         }
     }
 }

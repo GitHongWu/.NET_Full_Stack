@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 using ApplicationCore.Entities;
+using ApplicationCore.Exceptions;
 
 namespace Infrastructure.Services
 {
@@ -28,7 +29,7 @@ namespace Infrastructure.Services
 
             if(dbUser != null)
             {
-                throw new Exception("User already exists, please try to login");
+                throw new ConflictException("User already exists, please try to login");
             }
 
             // generate unique SALT
@@ -85,8 +86,11 @@ namespace Infrastructure.Services
                     Id = user.Id,
                     Email = user.Email,
                     FirstName = user.FirstName,
-                    LastName = user.LastName
+                    LastName = user.LastName,
                 };
+                var roles = user.Roles;
+                if (roles != null && roles.Any())
+                    loginResponseModel.Roles = roles.Select(r => r.Name).ToList();
                 return loginResponseModel;
             }
 

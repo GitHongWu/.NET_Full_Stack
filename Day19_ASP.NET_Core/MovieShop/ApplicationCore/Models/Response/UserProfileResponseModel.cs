@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Models.Response
 {
-    public class UserLoginResponseModel
+    public class UserProfileResponseModel
     {
         public int Id { get; set; }
         public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public List<string> Roles { get; set; }
+        public string FullName { get; set; }
     }
 }

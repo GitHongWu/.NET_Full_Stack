@@ -1,0 +1,40 @@
+﻿@model ApplicationCore.Models.Response.UserProfileResponseModel
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Profile</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.FullName)
+            </td>
+            <td>
+                <a href="/Account/EditProfile">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

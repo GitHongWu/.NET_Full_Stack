@@ -32,7 +32,37 @@ namespace Infrastructure.Services
                                       .FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value + " " +
                                   _httpContextAccessor.HttpContext?.User.Claims
                                       .FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
-        public bool IsAdmin { get; }
-        public IEnumerable<string> Roles { get; }
+        public bool IsAdmin => _IsAdmin();
+        private bool _IsAdmin()
+        {
+            if(_httpContextAccessor.HttpContext?.User.Identity != null && _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var roles = Roles;
+                return roles.Any(r => r.Contains("Admin"));
+            }
+            return false;
+        }
+
+        public IEnumerable<string> Roles => _Roles();
+        private IEnumerable<string> _Roles()
+        {
+            var claims = _httpContextAccessor.HttpContext?.User.Claims;
+            var roles = new List<string>();
+            foreach (var claim in claims)
+                if (claim.Type == ClaimTypes.Role)
+                    roles.Add(claim.Value);
+            return roles;
+        }
+
+        public bool IsSuperAdmin => _IsSuperAdmin();
+        private bool _IsSuperAdmin()
+        {
+            if (_httpContextAccessor.HttpContext?.User.Identity != null && _httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                var roles = Roles;
+                return roles.Any(r => r.Contains("SuperAdmin"));
+            }
+            return false;
+        }
     }
 }

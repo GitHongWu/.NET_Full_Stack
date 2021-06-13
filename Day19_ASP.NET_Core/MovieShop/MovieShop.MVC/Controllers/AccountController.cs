@@ -8,16 +8,19 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using ApplicationCore.Models.Response;
 
 namespace MovieShop.MVC.Controllers
 {
     public class AccountController : Controller
     {
         private readonly IUserService _userService;
+        private readonly ICurrentUserService _currentUserService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, ICurrentUserService currentUserService)
         {
             _userService = userService;
+            _currentUserService = currentUserService;
         }
 
         [HttpGet]
@@ -35,6 +38,7 @@ namespace MovieShop.MVC.Controllers
                 //save to database
                 var user = await _userService.RegisterUser(model);
                 // redirect to Login
+                return RedirectToAction("Login");
             }
             // take name, dob, email, pasword from view and save it to database
             return View();
@@ -43,7 +47,7 @@ namespace MovieShop.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Login()
         {
-            // show login in view, UserName, Passward
+            if (User.Identity != null && User.Identity.IsAuthenticated) return LocalRedirect("~/");
             return View();
         }
 
@@ -65,11 +69,14 @@ namespace MovieShop.MVC.Controllers
             // create claims object and store required information
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.GivenName,user.FirstName ),
+                new Claim(ClaimTypes.GivenName, user.FirstName ),
                 new Claim(ClaimTypes.Surname, user.LastName),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
             };
+
+            if (user.Roles != null) 
+                claims.AddRange(user.Roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             // HttpContext => 
             // method type => get/post
@@ -111,6 +118,35 @@ namespace MovieShop.MVC.Controllers
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            // check if user already logged in
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                var profileModel = new UserProfileResponseModel
+                {
+                    Id = _currentUserService.UserId,
+                    Email = _currentUserService.Email,
+                    FullName = _currentUserService.FullName,
+                };
+                return View(profileModel);
+            }
+            return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditProfile()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditProfile()
+        {
+            return View();
         }
     }
 }

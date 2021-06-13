@@ -29,7 +29,6 @@ namespace ApplicationCore.Models.Request
             "Password Should have minimum 8 with at least one upper, lower, number and special character")]
         public string Password { get; set; }
 
-        [Required]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
     }
 }
