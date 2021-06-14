@@ -11,16 +11,23 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 using ApplicationCore.Entities;
 using ApplicationCore.Exceptions;
+using System.Net;
 
 namespace Infrastructure.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMovieService _movieService;
+        private readonly ICurrentUserService _currentUserService;
+        private readonly IPurchaseRepository _purchaseRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IMovieService movieService, ICurrentUserService currentUserService, IPurchaseRepository purchaseRepository)
         {
             _userRepository = userRepository;
+            _movieService = movieService;
+            _currentUserService = currentUserService;
+            _purchaseRepository = purchaseRepository;
         }
 
         public async Task<UserRegisterResponseModel> RegisterUser(UserRegisterRequestModel userRegisterRequestModel)
@@ -97,6 +104,30 @@ namespace Infrastructure.Services
             return null;
         }
 
+        public async Task<UserProfileResponseModel> EditUserProfile(UserProfileRequestModel userProfileRequestModel, int id)
+        {
+            var dbUser = await _userRepository.GetUserById(id);
+
+            if (dbUser == null)
+            {
+                throw new Exception("User does not exist");
+            }
+
+            dbUser.FirstName = userProfileRequestModel.FirstName;
+            dbUser.LastName = userProfileRequestModel.LastName;
+            dbUser.Email = userProfileRequestModel.Email;
+
+            var updatedUser = await _userRepository.Update(dbUser);
+
+            var response = new UserProfileResponseModel
+            {
+                Id = updatedUser.Id,
+                Email = updatedUser.Email,
+                FullName = updatedUser.FirstName + " " + updatedUser.LastName,
+            };
+            return response;
+        }
+
         private string CreateSalt()
         {
             byte[] randomBytes = new byte[128 / 8];
@@ -117,6 +148,39 @@ namespace Infrastructure.Services
                 iterationCount: 10000,
                 numBytesRequested: 256 / 8));
             return hashed;
+        }
+
+        public async Task PurchaseMovie(PurchaseRequestModel model)
+        {
+            if (_currentUserService.UserId != model.UserId)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to purchase");
+
+            model.UserId = _currentUserService.UserId;
+
+            // See if Movie is already purchased.
+            if (await IsMoviePurchased(model))
+                throw new ConflictException("Movie already Purchased");
+            // Get Movie Price from Movie Table
+            var movie = await _movieService.GetMovieDetailsById(model.MovieId);
+            model.TotalPrice = movie.Price;
+
+
+            //var purchase = _mapper.Map<Purchase>(purchaseRequest);
+            var purchase = new Purchase
+            {
+                UserId = model.UserId,
+                PurchaseNumber = model.PurchaseNumber,
+                TotalPrice = model.TotalPrice,
+                PurchaseDateTime = model.PurchaseDateTime,
+                MovieId = model.MovieId,
+            };
+            await _purchaseRepository.Add(purchase);
+        }
+
+        public async Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseRequest)
+        {
+            return await _purchaseRepository.GetExists(p =>
+                p.UserId == purchaseRequest.UserId && p.MovieId == purchaseRequest.MovieId);
         }
     }
 }

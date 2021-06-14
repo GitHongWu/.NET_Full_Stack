@@ -144,8 +144,20 @@ namespace MovieShop.MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditProfile()
+        public async Task<IActionResult> EditProfile(UserProfileRequestModel model)
         {
+            // check if user already logged in
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                if (ModelState.IsValid)
+                {
+                    //save to database
+                    var user = await _userService.EditUserProfile(model, _currentUserService.UserId);
+
+                    // redirect to Login
+                    return RedirectToAction("Logout");
+                }
+            }
             return View();
         }
     }

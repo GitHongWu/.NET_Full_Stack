@@ -1,4 +1,5 @@
-﻿@using System.Globalization
+﻿@inject ICurrentUserService UserService
+@using System.Globalization
 @using ApplicationCore.ServiceInterfaces
 @model ApplicationCore.Models.Response.MovieDetailsResponseModel
 <div class="bg-image" style="background-image: url(@Model.BackdropUrl)">
@@ -30,10 +31,9 @@
                 <div class="col-8">
                     @foreach (var genre in Model.Genres)
                     {
-                        <a class="badge badge-pill badge-dark ml-1" asp-action="Genre" asp-route-id="@genre.Id">
-                            @genre.Name
-                        </a>
-                    }
+        <a class="badge badge-pill badge-dark ml-1" asp-action="Genre" asp-route-id="@genre.Id">
+            @genre.Name
+        </a>}
                 </div>
             </div>
 
@@ -75,11 +75,11 @@
                 </li>
 
                 <li class="list-group-item">
-                    <a class="btn btn-light btn-lg btn-block btn-sm" asp-route-id="@Model.Id" asp-controller="User" asp-action="BuyMovie">
+                    <a class="btn btn-light btn-lg btn-block btn-sm" asp-route-id="@Model.Id" asp-controller="User" asp-action="PurchaseMovie">
                         BUY @Model.Price
                     </a>
 
-                    <a class="btn btn-light btn-lg btn-block btn-sm" asp-route-id="@Model.Id" asp-controller="User" asp-action="BuyMovie">
+                    <a class="btn btn-light btn-lg btn-block btn-sm" asp-route-id="@Model.Id" asp-controller="User" asp-action="PurchaseMovie">
                         WATCH MOVIE
                     </a>
                 </li>
@@ -141,16 +141,16 @@
             <tbody>
                 @foreach (var cast in Model?.Casts)
                 {
-                    <tr>
-                        <td>
-                            <img src="@cast.ProfilePath"
-                                 class="cast-small-img rounded-circle"
-                                 alt="@cast.Name" />
-                        </td>
-                        <td> @cast.Name </td>
-                        <td> @cast.Character</td>
-                    </tr>            
-                }
+    <tr>
+        <td>
+            <img src="@cast.ProfilePath"
+                 class="cast-small-img rounded-circle"
+                 alt="@cast.Name" />
+        </td>
+        <td> @cast.Name </td>
+        <td> @cast.Character</td>
+    </tr>
+}
 
 
             </tbody>

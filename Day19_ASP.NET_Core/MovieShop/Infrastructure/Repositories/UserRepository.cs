@@ -22,5 +22,10 @@ namespace Infrastructure.Repositories
             //return user;
             return await _dbContext.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Email == email);
         }
+
+        public async Task<User> GetUserById(int id)
+        {
+            return await _dbContext.Users.Include(u => u.Roles).FirstOrDefaultAsync(u => u.Id == id);
+        }
     }
 }
