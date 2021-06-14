@@ -45,6 +45,6 @@ namespace ApplicationCore.Models.Request
 
         [Range(.99, 49)]
         public decimal? Price { get; set; }
-        public List<GenreResponseModel> Genres { get; set; }
+        public List<GenreResponseModel>? Genres { get; set; }
     }
 }

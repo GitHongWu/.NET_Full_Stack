@@ -37,7 +37,8 @@ namespace Infrastructure.Repositories
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
-                throw new NotFoundException("Movie Not found");
+                return null;
+                //throw new NotFoundException("Movie Not found");
             }
 
             var movieRating = await _dbContext.Reviews.Where(r => r.MovieId == id).DefaultIfEmpty()

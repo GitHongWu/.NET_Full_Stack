@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationCore.Entities;
 using ApplicationCore.Exceptions;
+using ApplicationCore.Models.Request;
 using ApplicationCore.Models.Response;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
@@ -13,10 +16,12 @@ namespace Infrastructure.Services
     public class MovieService : IMovieService
     {
         private readonly IMovieRepository _movieRepository;
+        private readonly ICurrentUserService _currentUserService;
 
-        public MovieService(IMovieRepository movieRepository)
+        public MovieService(IMovieRepository movieRepository, ICurrentUserService currentUserService)
         {
             _movieRepository = movieRepository;
+            _currentUserService = currentUserService;
         }
 
         public async Task<List<MovieCardResponseModel>> GetTopRevenueMovies()
@@ -86,6 +91,68 @@ namespace Infrastructure.Services
                 Genres = genres,
                 Casts = casts,
             };
+            return response;
+        }
+
+        public async Task<MovieDetailsResponseModel> CreateMovie(MovieCreateRequestModel model)
+        {
+            if(!_currentUserService.IsAdmin)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to create movie");
+
+            var dbMovie = await _movieRepository.GetById(model.Id);
+
+            if (dbMovie != null)
+            {
+                throw new ConflictException("Movie already exists");
+            }
+
+            //ICollection<Genre> genres = new List<Genre>();
+            //foreach (var g in model.Genres)
+            //{
+            //    genres.Add(new Genre
+            //    {
+            //        Id = g.Id,
+            //        Name = g.Name,
+            //    });
+            //}
+            var movie = new Movie
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Overview = model.Overview,
+                Tagline = model.Tagline,
+                Revenue = model.Revenue,
+                Budget = model.Budget,
+                ImdbUrl = model.ImdbUrl,
+                TmdbUrl = model.TmdbUrl,
+                PosterUrl = model.PosterUrl,
+                BackdropUrl = model.BackdropUrl,
+                OriginalLanguage = model.OriginalLanguage,
+                ReleaseDate = model.ReleaseDate,
+                RunTime = model.RunTime,
+                Price = model.Price,
+                //Genres = genres,
+            };
+            var createdMovie = _movieRepository.Add(movie);
+
+            var response = new MovieDetailsResponseModel
+            {
+                Id = movie.Id,
+                Title = movie.Title,
+                Overview = movie.Overview,
+                Tagline = movie.Tagline,
+                Revenue = movie.Revenue,
+                Budget = movie.Budget,
+                ImdbUrl = movie.ImdbUrl,
+                TmdbUrl = movie.TmdbUrl,
+                PosterUrl = movie.PosterUrl,
+                BackdropUrl = movie.BackdropUrl,
+                ReleaseDate = movie.ReleaseDate,
+                RunTime = movie.RunTime,
+                Price = movie.Price,
+                //Genres = model.Genres,
+            };
+
             return response;
         }
     }

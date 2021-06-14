@@ -1,4 +1,6 @@
-﻿@model ApplicationCore.Models.Request.MovieCreateRequestModel
+﻿@using ApplicationCore.ServiceInterfaces
+@model ApplicationCore.Models.Request.MovieCreateRequestModel
+@inject IGenreService GenreService;
 
 @{
     ViewData["Title"] = "CreateMovie";
@@ -82,33 +84,45 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Genres" class="control-label"></label><br />
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="AdventureCheckbox" value="Adventure">
-                    <label class="form-check-label" for="AdventureCheckbox">Adventure</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="FantasyCheckbox" value="Fantasy">
-                    <label class="form-check-label" for="FantasyCheckbox">Fantasy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="AnimationCheckbox" value="Animation">
-                    <label class="form-check-label" for="AnimationCheckbox">Animation</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="DramaCheckbox" value="Drama">
-                    <label class="form-check-label" for="DramaCheckbox">Drama</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="HorrorCheckbox" value="Horror">
-                    <label class="form-check-label" for="HorrorCheckbox">Horror</label>
-                </div>
-            </div>
+            @*<div class="form-group">
+                    <label asp-for="Genres" class="control-label"></label><br />
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="AdventureCheckbox" value="Adventure">
+                        <label class="form-check-label" for="AdventureCheckbox">Adventure</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="FantasyCheckbox" value="Fantasy">
+                        <label class="form-check-label" for="FantasyCheckbox">Fantasy</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="AnimationCheckbox" value="Animation">
+                        <label class="form-check-label" for="AnimationCheckbox">Animation</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="DramaCheckbox" value="Drama">
+                        <label class="form-check-label" for="DramaCheckbox">Drama</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="HorrorCheckbox" value="Horror">
+                        <label class="form-check-label" for="HorrorCheckbox">Horror</label>
+                    </div>
+                </div>*@
             <div class="form-group">
                 <input type="submit" value="Create Movie" class="btn btn-primary" />
             </div>
         </form>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <h5 class="mb-2">Genres</h5>
+    <div class="form-check col-md-4">
+
+        @foreach (var genre in await GenreService.GetAllGenres())
+        {
+            <input name="genre" type="checkbox" value="@genre.Id" />
+            @genre.Name<br />
+        }
     </div>
 </div>
 
