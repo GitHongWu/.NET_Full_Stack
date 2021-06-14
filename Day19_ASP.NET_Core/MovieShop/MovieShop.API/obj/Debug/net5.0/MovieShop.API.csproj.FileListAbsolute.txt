@@ -63,3 +63,6 @@ D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieS
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\obj\Debug\net5.0\ref\MovieShop.API.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.pdb
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.genruntimeconfig.cache
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\AutoMapper.dll
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll

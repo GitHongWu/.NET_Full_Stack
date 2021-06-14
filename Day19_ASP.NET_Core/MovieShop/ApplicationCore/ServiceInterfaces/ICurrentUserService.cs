@@ -15,5 +15,6 @@ namespace ApplicationCore.ServiceInterfaces
         bool IsAdmin { get; }
         IEnumerable<string> Roles { get; }
         bool IsSuperAdmin { get; }
+        int TotalMovies { get; }
     }
 }

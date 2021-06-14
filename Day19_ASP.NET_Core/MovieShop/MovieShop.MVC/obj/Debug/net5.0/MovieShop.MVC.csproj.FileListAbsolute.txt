@@ -171,3 +171,5 @@ D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Account\Profile.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Account\EditProfile.cshtml.g.cs
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\User\PurchaseMovie.cshtml.g.cs
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\User\GetUserPurchasedMovies.cshtml.g.cs
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs

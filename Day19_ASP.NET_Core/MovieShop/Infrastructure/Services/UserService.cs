@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using ApplicationCore.Entities;
 using ApplicationCore.Exceptions;
 using System.Net;
+using static ApplicationCore.Models.Response.PurchaseResponseModel;
 
 namespace Infrastructure.Services
 {
@@ -177,10 +178,43 @@ namespace Infrastructure.Services
             await _purchaseRepository.Add(purchase);
         }
 
-        public async Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseRequest)
+        private async Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseRequest)
         {
             return await _purchaseRepository.GetExists(p =>
                 p.UserId == purchaseRequest.UserId && p.MovieId == purchaseRequest.MovieId);
+        }
+
+        public async Task<PurchaseResponseModel> GetAllPurchasesForUser(int id)
+        {
+            if (_currentUserService.UserId != id)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to View Purchases");
+
+            //var purchasedMovies = await _purchaseRepository.ListAllWithIncludesAsync(
+            //    p => p.UserId == _currentUserService.UserId,
+            //    p => p.Movie);
+
+            var purchasedMovies = await _purchaseRepository.GetAllPurchasesByUser(id);
+
+            //return _mapper.Map<PurchaseResponseModel>(purchasedMovies);
+            List<PurchasedMovieResponseModel> moviesList = new List<PurchasedMovieResponseModel>();
+            foreach (var item in purchasedMovies)
+            {
+                moviesList.Add(new PurchasedMovieResponseModel 
+                {
+                    Id = item.MovieId,
+                    Title = item.Movie.Title,
+                    PosterUrl = item.Movie.PosterUrl,
+                    ReleaseDate = item.Movie.ReleaseDate,
+                    PurchaseDateTime = item.PurchaseDateTime,
+                });
+            }
+            
+            var response = new PurchaseResponseModel
+            {
+                UserId = id,
+                PurchasedMovies = moviesList,
+            };
+            return response;
         }
     }
 }

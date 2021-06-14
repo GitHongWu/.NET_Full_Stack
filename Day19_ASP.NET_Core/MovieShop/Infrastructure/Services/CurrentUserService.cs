@@ -1,4 +1,5 @@
-﻿using ApplicationCore.ServiceInterfaces;
+﻿using ApplicationCore.RepositoryInterfaces;
+using ApplicationCore.ServiceInterfaces;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace Infrastructure.Services
     public class CurrentUserService : ICurrentUserService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IPurchaseRepository _purchaseRepository;
 
-        public CurrentUserService(IHttpContextAccessor httpContextAccessor)
+        public CurrentUserService(IHttpContextAccessor httpContextAccessor, IPurchaseRepository purchaseRepository)
         {
             _httpContextAccessor = httpContextAccessor;
+            _purchaseRepository = purchaseRepository;
         }
 
         // access HttpContext 
@@ -63,6 +66,13 @@ namespace Infrastructure.Services
                 return roles.Any(r => r.Contains("SuperAdmin"));
             }
             return false;
+        }
+
+        public int TotalMovies => _TotalMovies();
+
+        private int _TotalMovies()
+        {
+            return _purchaseRepository.CountPurchasesByUser(UserId); ;
         }
     }
 }

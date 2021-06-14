@@ -66,5 +66,17 @@ namespace Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<IEnumerable<T>> ListAllWithIncludesAsync(Expression<Func<T, bool>> @where,
+            params Expression<Func<T, object>>[] includes)
+        {
+            var query = _dbContext.Set<T>().AsQueryable();
+
+            if (includes != null)
+                foreach (Expression<Func<T, object>> navigationProperty in includes)
+                    query = query.Include(navigationProperty);
+
+            return await query.Where(@where).ToListAsync();
+        }
+
     }
 }

@@ -31,7 +31,9 @@ namespace MovieShop.MVC.Controllers
             //
             // make a request to the database and get info from Purchase Table 
             // select * from Purchase where userid = @getfromcookie
-            return View();
+
+            var movies = await _userService.GetAllPurchasesForUser(userId);
+            return View(movies);
         }
 
         [HttpGet]

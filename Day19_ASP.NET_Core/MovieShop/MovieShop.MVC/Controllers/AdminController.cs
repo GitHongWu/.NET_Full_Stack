@@ -22,9 +22,17 @@ namespace MovieShop.MVC.Controllers
             if (ModelState.IsValid)
             {
                 // save to database
+
             }
             return View();
         }
+
+        [HttpGet]
+        public IActionResult CreateCast()
+        {
+            return View();
+        }
+        
 
         [HttpPost]
         public IActionResult Movie()
@@ -40,6 +48,12 @@ namespace MovieShop.MVC.Controllers
 
         [HttpGet]
         public IActionResult Purchases()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Index()
         {
             return View();
         }

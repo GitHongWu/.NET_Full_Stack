@@ -32,5 +32,21 @@ namespace Infrastructure.Repositories
                 .Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
             return purchases;
         }
+
+        public async Task<IEnumerable<Purchase>> GetAllPurchasesByUser(int userId, int pageSize = 30,
+            int pageIndex = 1)
+        {
+            //var purchases = await _dbContext.Purchases.Where(p => p.UserId == userId).Include(m => m.Movie)
+            //    .OrderByDescending(p => p.PurchaseDateTime)
+            //    .Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+            var purchases = await _dbContext.Purchases.Where(p => p.UserId == userId).Include(m => m.Movie)
+                .OrderByDescending(p => p.PurchaseDateTime).ToListAsync();
+            return purchases;
+        }
+
+        public int CountPurchasesByUser(int userId)
+        {
+            return _dbContext.Purchases.Where(p => p.UserId == userId).Include(m => m.Movie).Count();
+        }
     }
 }
