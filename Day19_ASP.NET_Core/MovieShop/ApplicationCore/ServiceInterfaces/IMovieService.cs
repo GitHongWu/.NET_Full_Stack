@@ -12,9 +12,12 @@ namespace ApplicationCore.ServiceInterfaces
     {
         //method for getting top 30 highest movies
         Task<List<MovieCardResponseModel>> GetTopRevenueMovies();
+        Task<List<MovieCardResponseModel>> GetTopRatedMovies();
         Task<MovieDetailsResponseModel> GetMovieDetailsById(int id);
         Task<MovieDetailsResponseModel> CreateMovie(MovieCreateRequestModel model);
+        Task<MovieDetailsResponseModel> UpdateMovie(MovieCreateRequestModel model);
         Task<List<MovieCardResponseModel>> GetAllMovies();
+        Task<List<MovieCardResponseModel>> GetAllMoviePurchases();
 
     }
 }

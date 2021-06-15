@@ -13,5 +13,6 @@ namespace ApplicationCore.RepositoryInterfaces
         Task<IEnumerable<Purchase>> GetAllPurchasesByMovie(int movieId, int pageSize = 30, int pageIndex = 0);
         Task<IEnumerable<Purchase>> GetAllPurchasesByUser(int userId, int pageSize = 30, int pageIndex = 0);
         int CountPurchasesByUser(int userId);
+        Task<IEnumerable<Purchase>> GetAllPurchasedMovies();
     }
 }

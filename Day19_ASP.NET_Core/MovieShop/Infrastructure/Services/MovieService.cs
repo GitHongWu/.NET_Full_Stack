@@ -17,16 +17,37 @@ namespace Infrastructure.Services
     {
         private readonly IMovieRepository _movieRepository;
         private readonly ICurrentUserService _currentUserService;
+        private readonly IPurchaseRepository _purchaseRepository;
 
-        public MovieService(IMovieRepository movieRepository, ICurrentUserService currentUserService)
+        public MovieService(IMovieRepository movieRepository, ICurrentUserService currentUserService, IPurchaseRepository purchaseRepository)
         {
             _movieRepository = movieRepository;
             _currentUserService = currentUserService;
+            _purchaseRepository = purchaseRepository;
         }
 
         public async Task<List<MovieCardResponseModel>> GetTopRevenueMovies()
         {
             var movies = await _movieRepository.GetHighestRevenueMovies();
+
+            var movieCardList = new List<MovieCardResponseModel>();
+            foreach (var movie in movies)
+            {
+                movieCardList.Add(new MovieCardResponseModel
+                {
+                    Id = movie.Id,
+                    PosterUrl = movie.PosterUrl,
+                    ReleaseDate = movie.ReleaseDate.GetValueOrDefault(),
+                    Title = movie.Title
+                });
+            }
+
+            return movieCardList;
+        }
+
+        public async Task<List<MovieCardResponseModel>> GetTopRatedMovies()
+        {
+            var movies = await _movieRepository.GetTopRatedMovies();
 
             var movieCardList = new List<MovieCardResponseModel>();
             foreach (var movie in movies)
@@ -156,6 +177,23 @@ namespace Infrastructure.Services
             return response;
         }
 
+        public async Task<MovieDetailsResponseModel> UpdateMovie(MovieCreateRequestModel model)
+        {
+            //var movie = _mapper.Map<Movie>(movieCreateRequest);
+
+            //var createdMovie = await _movieRepository.UpdateAsync(movie);
+            //// var movieGenres = new List<MovieGenre>();
+            //foreach (var genre in movieCreateRequest.Genres)
+            //{
+            //    var movieGenre = new MovieGenre { MovieId = createdMovie.Id, GenreId = genre.Id };
+            //    await _genresRepository.UpdateAsync(movieGenre);
+            //}
+
+            //return _mapper.Map<MovieDetailsResponseModel>(createdMovie);
+
+            throw new NotImplementedException();
+        }
+
         public async Task<List<MovieCardResponseModel>> GetAllMovies()
         {
             var movies = await _movieRepository.GetAllMoviesInOrder();
@@ -169,6 +207,25 @@ namespace Infrastructure.Services
                     PosterUrl = movie.PosterUrl,
                     ReleaseDate = movie.ReleaseDate.GetValueOrDefault(),
                     Title = movie.Title
+                });
+            }
+
+            return movieCardList;
+        }
+
+        public async Task<List<MovieCardResponseModel>> GetAllMoviePurchases()
+        {
+            var purchasedMovies = await _purchaseRepository.GetAllPurchasedMovies();
+
+            var movieCardList = new List<MovieCardResponseModel>();
+            foreach (var movie in purchasedMovies)
+            {
+                movieCardList.Add(new MovieCardResponseModel
+                {
+                    Id = movie.MovieId,
+                    PosterUrl = movie.Movie.PosterUrl,
+                    ReleaseDate = movie.Movie.ReleaseDate.GetValueOrDefault(),
+                    Title = movie.Movie.Title,
                 });
             }
 

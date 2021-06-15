@@ -48,5 +48,11 @@ namespace Infrastructure.Repositories
         {
             return _dbContext.Purchases.Where(p => p.UserId == userId).Include(m => m.Movie).Count();
         }
+
+        public async Task<IEnumerable<Purchase>> GetAllPurchasedMovies()
+        {
+            var purchases = await _dbContext.Purchases.Include(m => m.Movie).OrderByDescending(p => p.PurchaseDateTime).ToListAsync();
+            return purchases;
+        }
     }
 }

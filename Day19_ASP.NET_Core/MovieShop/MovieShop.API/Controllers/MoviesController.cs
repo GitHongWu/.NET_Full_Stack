@@ -19,14 +19,47 @@ namespace MovieShop.API.Controllers
             _movieService = movieService;
         }
 
+        // GET /api​/Movies
         [HttpGet]
         [Route("")]
         public async Task<IActionResult> GetAllMovies()
         {
             var movies = await _movieService.GetAllMovies();
-            return Ok(movies);
+            if (movies.Any())
+            {
+                return Ok(movies);
+            }
+            return NotFound("no movies found");
         }
 
+        // GET /api​/Movies​/{id}
+        [HttpGet]
+        [Route("{id:int}", Name = "GetMovie")]
+        public async Task<IActionResult> GetMovie(int id)
+        {
+            var movie = await _movieService.GetMovieDetailsById(id);
+            if (movie != null)
+            {
+                return Ok(movie);
+            }
+            return NotFound("no movies found");
+        }
+
+        // GET /api​/Movies​/toprated
+        [HttpGet]
+        [Route("toprated")]
+        public async Task<IActionResult> GetTopRatedMovies()
+        {
+            var movies = await _movieService.GetTopRatedMovies();
+
+            if (movies.Any())
+            {
+                return Ok(movies);
+            }
+            return NotFound("no movies found");
+        }
+
+        // GET /api​/Movies​/toprevenue
         [HttpGet]
         [Route("toprevenue")]
         public async Task<IActionResult> GetHighestGrossingMovies()
