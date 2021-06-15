@@ -17,6 +17,7 @@ namespace ApplicationCore.ServiceInterfaces
         Task PurchaseMovie(PurchaseRequestModel purchaseRequest);
         Task<PurchaseResponseModel> GetAllPurchasesForUser(int id);
         Task<User> GetUser(string email);
+        Task<UserRegisterResponseModel> GetUserDetails(int id);
 
         // delete
         // EditUser

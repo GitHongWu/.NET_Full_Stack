@@ -20,7 +20,8 @@ namespace Infrastructure.Repositories
 
         public async Task<IEnumerable<Movie>> GetTopRatedMovies()
         {
-            throw new NotImplementedException();
+            var movies = await _dbContext.Movies.OrderByDescending(m => m.Rating).Take(6).ToListAsync();
+            return movies;
         }
 
         public async Task<IEnumerable<Movie>> GetHighestRevenueMovies()
@@ -79,6 +80,12 @@ namespace Infrastructure.Repositories
             //movie.Genres = genres;
 
             return movie;
+        }
+
+        public async Task<IEnumerable<Movie>> GetAllMoviesInOrder()
+        {
+            var movies = await _dbContext.Movies.OrderBy(m => m.Id).Take(6).ToListAsync();
+            return movies;
         }
     }
 }

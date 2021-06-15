@@ -51,12 +51,14 @@ namespace MovieShop.API
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IGenreService, GenreService>();
 
-            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
-
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+
+            services.AddScoped<IJwtService, JwtService>();
 
             services.AddHttpContextAccessor();
         }

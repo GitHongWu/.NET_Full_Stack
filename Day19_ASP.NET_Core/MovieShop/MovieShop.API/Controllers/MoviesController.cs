@@ -20,6 +20,14 @@ namespace MovieShop.API.Controllers
         }
 
         [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetAllMovies()
+        {
+            var movies = await _movieService.GetAllMovies();
+            return Ok(movies);
+        }
+
+        [HttpGet]
         [Route("toprevenue")]
         public async Task<IActionResult> GetHighestGrossingMovies()
         {

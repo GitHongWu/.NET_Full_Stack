@@ -221,5 +221,22 @@ namespace Infrastructure.Services
         {
             return await _userRepository.GetUserByEmail(email);
         }
+
+        public async Task<UserRegisterResponseModel> GetUserDetails(int id)
+        {
+            var user = await _userRepository.GetById(id);
+            if (user == null) 
+                throw new NotFoundException("User", id);
+
+            //var response = _mapper.Map<UserRegisterResponseModel>(user);
+            var response = new UserRegisterResponseModel
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+            };
+            return response;
+        }
     }
 }
