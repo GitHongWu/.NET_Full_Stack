@@ -11,7 +11,6 @@ namespace ApplicationCore.Models.Request
 {
     public class MovieCreateRequestModel
     {
-        public int Id { get; set; }
 
         [Required]
         [StringLength(150)]

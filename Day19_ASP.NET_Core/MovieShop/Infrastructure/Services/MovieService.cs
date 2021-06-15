@@ -99,12 +99,12 @@ namespace Infrastructure.Services
             if(!_currentUserService.IsAdmin)
                 throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to create movie");
 
-            var dbMovie = await _movieRepository.GetById(model.Id);
+           // var dbMovie = await _movieRepository.GetById(model.Id);
 
-            if (dbMovie != null)
-            {
-                throw new ConflictException("Movie already exists");
-            }
+            //if (dbMovie != null)
+            //{
+            //    throw new ConflictException("Movie already exists");
+            //}
 
             //ICollection<Genre> genres = new List<Genre>();
             //foreach (var g in model.Genres)
@@ -117,7 +117,7 @@ namespace Infrastructure.Services
             //}
             var movie = new Movie
             {
-                Id = model.Id,
+               
                 Title = model.Title,
                 Overview = model.Overview,
                 Tagline = model.Tagline,
@@ -133,23 +133,23 @@ namespace Infrastructure.Services
                 Price = model.Price,
                 //Genres = genres,
             };
-            var createdMovie = _movieRepository.Add(movie);
+            var createdMovie = await _movieRepository.Add(movie);
 
             var response = new MovieDetailsResponseModel
             {
-                Id = movie.Id,
-                Title = movie.Title,
-                Overview = movie.Overview,
-                Tagline = movie.Tagline,
-                Revenue = movie.Revenue,
-                Budget = movie.Budget,
-                ImdbUrl = movie.ImdbUrl,
-                TmdbUrl = movie.TmdbUrl,
-                PosterUrl = movie.PosterUrl,
-                BackdropUrl = movie.BackdropUrl,
-                ReleaseDate = movie.ReleaseDate,
-                RunTime = movie.RunTime,
-                Price = movie.Price,
+                Id = createdMovie.Id,
+                Title = createdMovie.Title,
+                Overview = createdMovie.Overview,
+                Tagline = createdMovie.Tagline,
+                Revenue = createdMovie.Revenue,
+                Budget = createdMovie.Budget,
+                ImdbUrl = createdMovie.ImdbUrl,
+                TmdbUrl = createdMovie.TmdbUrl,
+                PosterUrl = createdMovie.PosterUrl,
+                BackdropUrl = createdMovie.BackdropUrl,
+                ReleaseDate = createdMovie.ReleaseDate,
+                RunTime = createdMovie.RunTime,
+                Price = createdMovie.Price,
                 //Genres = model.Genres,
             };
 

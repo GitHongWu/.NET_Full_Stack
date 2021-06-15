@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Models.Request;
+﻿using ApplicationCore.Entities;
+using ApplicationCore.Models.Request;
 using ApplicationCore.Models.Response;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace ApplicationCore.ServiceInterfaces
         Task<UserProfileResponseModel> EditUserProfile(UserProfileRequestModel userProfileRequestModel, int Id);
         Task PurchaseMovie(PurchaseRequestModel purchaseRequest);
         Task<PurchaseResponseModel> GetAllPurchasesForUser(int id);
+        Task<User> GetUser(string email);
 
         // delete
         // EditUser
