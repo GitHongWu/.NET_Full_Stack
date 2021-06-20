@@ -63,7 +63,7 @@ namespace MovieShop.MVC.Controllers
                 if (ModelState.IsValid)
                 {
                     await _userService.PurchaseMovie(purchaseModel);
-                    return Ok();
+                    return RedirectToAction("GetUserPurchasedMovies");
                 }
             }
             return View();
