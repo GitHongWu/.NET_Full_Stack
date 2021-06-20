@@ -20,13 +20,52 @@ namespace Infrastructure.Repositories
 
         public async Task<IEnumerable<Movie>> GetTopRatedMovies()
         {
-            var movies = await _dbContext.Movies.OrderByDescending(m => m.Rating).Take(6).ToListAsync();
-            return movies;
+            //var movies = await _dbContext.Movies.Include(m => m.Reviews).AverageAsync(r => r == null ? 0 : r.Rating).OrderByDescending(m => m.Rating).Take(25).ToListAsync();
+
+
+            //var movies = await _dbContext.Movies.ToListAsync();
+            //foreach (var movie in movies)
+            //{
+            //    movie.Rating = await _dbContext.Reviews.Where(r => r.MovieId == movie.Id).DefaultIfEmpty()
+            //    .AverageAsync(r => r == null ? 0 : r.Rating);
+            //}
+            //movies.OrderByDescending(m => m.Rating).Take(25);
+            //return movies;
+
+
+            //var movie_rating = (from m in _dbContext.Movies
+            //                    join r in _dbContext.Reviews on m.Id equals r.MovieId
+            //                    select new { m.Id, m.PosterUrl, m.ReleaseDate, m.Title, r.Rating })
+            //                    .GroupBy(m => new { m.Id, m.PosterUrl, m.ReleaseDate, m.Title })
+            //                    .Select(g => new { m = g.Key, Rating = g.Average(x => x.Rating) })
+            //                    .OrderByDescending(m => m.Rating).Take(25).ToListAsync();
+            //return movie_rating;
+
+
+            //return await _dbContext.Movies
+            //           .Join(_dbContext.Reviews, m => m.Id, r => r.MovieId,
+            //                 (m, r) => new { m.Id, m.PosterUrl, m.ReleaseDate, m.Title, r.Rating })
+            //           .GroupBy(m => new { m.Id, m.PosterUrl, m.ReleaseDate, m.Title },
+            //                    pair => new { pair.Id, pair.PosterUrl, pair.ReleaseDate, pair.Title }, // Key selector
+            //                    pair => pair.Rating, // Element selector
+            //                    (key, numbers) => new {
+            //                        movie = key,
+            //                        Rating = numbers.Average()
+            //                    });
+
+            //return _dbContext.Movies.Include(m => m.Reviews).GroupBy(m => new { m.Id, m.PosterUrl, m.ReleaseDate, m.Title }).Select(g => new { m = g.Key, Rating = g.Average(x => x.Rating) }).OrderByDescending(m => m.Rating).Take(25).ToListAsync();
+
+            var topRatedMovies = await _dbContext.Reviews.Include(m => m.Movie)
+                .GroupBy(r => new { Id = r.MovieId, r.Movie.PosterUrl, r.Movie.Title, r.Movie.ReleaseDate})
+                .OrderByDescending(g => g.Average(m => m.Rating))
+                .Select(m => new Movie { Id = m.Key.Id, PosterUrl = m.Key.PosterUrl, Title = m.Key.Title, ReleaseDate = m.Key.ReleaseDate, Rating = m.Average(x => x.Rating)})
+                .Take(25).ToListAsync();
+            return topRatedMovies;
         }
 
         public async Task<IEnumerable<Movie>> GetHighestRevenueMovies()
         {
-            var movies = await _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(6).ToListAsync();
+            var movies = await _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(25).ToListAsync();
             return movies;
         }
 
@@ -84,7 +123,7 @@ namespace Infrastructure.Repositories
 
         public async Task<IEnumerable<Movie>> GetAllMoviesInOrder()
         {
-            var movies = await _dbContext.Movies.OrderBy(m => m.Id).Take(6).ToListAsync();
+            var movies = await _dbContext.Movies.Take(25).ToListAsync();
             return movies;
         }
     }

@@ -31,7 +31,7 @@ namespace MovieShop.MVC.Controllers
             {
                 // save to database
                 var movie = await _movieService.CreateMovie(model);
-                // redirect to Login
+                // redirect to new created movie
                 return LocalRedirect(localUrl: $"~/Movies/Details/{movie.Id}");
             }
             return View();

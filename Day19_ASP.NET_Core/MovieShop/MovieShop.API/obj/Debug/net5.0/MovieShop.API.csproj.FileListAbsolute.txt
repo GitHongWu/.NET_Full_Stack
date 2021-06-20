@@ -22,7 +22,6 @@ D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Micros
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.OpenApi.dll
-D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -66,3 +65,4 @@ D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieS
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\AutoMapper.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Temp\Antra\Day19_ASP.NET_Core\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
