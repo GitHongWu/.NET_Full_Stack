@@ -22,13 +22,18 @@ namespace Infrastructure.Services
         private readonly IMovieService _movieService;
         private readonly ICurrentUserService _currentUserService;
         private readonly IPurchaseRepository _purchaseRepository;
+        private readonly IAsyncRepository<Favorite> _favoriteRepository;
+        private readonly IAsyncRepository<Review> _reviewRepository;
 
-        public UserService(IUserRepository userRepository, IMovieService movieService, ICurrentUserService currentUserService, IPurchaseRepository purchaseRepository)
+        public UserService(IUserRepository userRepository, IMovieService movieService, ICurrentUserService currentUserService,
+            IPurchaseRepository purchaseRepository, IAsyncRepository<Favorite> favoriteRepository, IAsyncRepository<Review> reviewRepository)
         {
             _userRepository = userRepository;
             _movieService = movieService;
             _currentUserService = currentUserService;
             _purchaseRepository = purchaseRepository;
+            _favoriteRepository = favoriteRepository;
+            _reviewRepository = reviewRepository;
         }
 
         public async Task<UserRegisterResponseModel> RegisterUser(UserRegisterRequestModel userRegisterRequestModel)
@@ -235,6 +240,133 @@ namespace Infrastructure.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+            };
+            return response;
+        }
+
+        public async Task<bool> FavoriteExists(int id, int movieId)
+        {
+            return await _favoriteRepository.GetExists(f => f.MovieId == movieId &&
+                                                                 f.UserId == id);
+        }
+        public async Task AddFavorite(FavoriteRequestModel favoriteRequest)
+        {
+            if (_currentUserService.UserId != favoriteRequest.UserId)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to purchase");
+            // See if Movie is already Favorite.
+            if (await FavoriteExists(favoriteRequest.UserId, favoriteRequest.MovieId))
+                throw new ConflictException("Movie already Favorited");
+
+            var favorite = new Favorite
+            {
+                UserId = favoriteRequest.UserId,
+                MovieId = favoriteRequest.MovieId,
+            };
+
+            await _favoriteRepository.Add(favorite);
+        }
+
+        public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
+        {
+            var dbFavorite = await _favoriteRepository.List(r => r.UserId == favoriteRequest.UserId &&
+                                                         r.MovieId == favoriteRequest.MovieId);
+            // var favorite = _mapper.Map<Favorite>(favoriteRequest);
+            await _favoriteRepository.Delete(dbFavorite.First());
+        }
+
+        public async Task AddMovieReview(ReviewRequestModel reviewRequest)
+        {
+            if (_currentUserService.UserId != reviewRequest.UserId)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to Review");
+            
+            var review = new Review
+            {
+                UserId = reviewRequest.UserId,
+                MovieId = reviewRequest.MovieId,
+                ReviewText = reviewRequest.ReviewText,
+                Rating = reviewRequest.Rating,
+            };
+
+            await _reviewRepository.Add(review);
+        }
+
+        public async Task UpdateMovieReview(ReviewRequestModel reviewRequest)
+        {
+            if (_currentUserService.UserId != reviewRequest.UserId)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to Review");
+
+            var review = new Review
+            {
+                UserId = reviewRequest.UserId,
+                MovieId = reviewRequest.MovieId,
+                ReviewText = reviewRequest.ReviewText,
+                Rating = reviewRequest.Rating,
+            };
+
+            await _reviewRepository.Update(review);
+        }
+
+        public async Task DeleteMovieReview(int userId, int movieId)
+        {
+            if (_currentUserService.UserId != userId)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to Delete Review");
+            var review = await _reviewRepository.List(r => r.UserId == userId && r.MovieId == movieId);
+            await _reviewRepository.Delete(review.First());
+        }
+
+        public async Task<FavoriteResponseModel> GetAllFavoritesForUser(int id)
+        {
+            if (_currentUserService.UserId != id)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to View Favorites");
+
+            var favoriteMovies = await _favoriteRepository.ListAllWithIncludesAsync(
+                p => p.UserId == _currentUserService.UserId,
+                p => p.Movie);
+
+            var movies = new List<MovieCardResponseModel>();
+            foreach (var m in favoriteMovies)
+            {
+                movies.Add(new MovieCardResponseModel
+                {
+                    Id = m.MovieId,
+                    Title = m.Movie.Title,
+                    PosterUrl = m.Movie.PosterUrl,
+                    ReleaseDate = m.Movie.ReleaseDate,
+                });
+            }
+
+            var response = new FavoriteResponseModel
+            {
+                UserId = _currentUserService.UserId,
+                FavoriteMovies = movies,
+            };
+            return response;
+        }
+
+        public async Task<ReviewResponseModel> GetAllReviewsByUser(int id)
+        {
+            if (_currentUserService.UserId != id)
+                throw new HttpException(HttpStatusCode.Unauthorized, "You are not Authorized to View Reviews");
+
+            var userReviews = await _reviewRepository.ListAllWithIncludesAsync(r => r.UserId == id, r => r.Movie);
+
+            var reviews = new List<ReviewMovieResponseModel>();
+            foreach (var r in userReviews)
+            {
+                reviews.Add(new ReviewMovieResponseModel 
+                {
+                    UserId = r.UserId,
+                    MovieId = r.MovieId,
+                    ReviewText = r.ReviewText,
+                    Rating = r.Rating,
+                    Name = r.User.FirstName,
+                });
+            }
+
+            var response = new ReviewResponseModel
+            {
+                UserId = _currentUserService.UserId,
+                MovieReviews = reviews,
             };
             return response;
         }

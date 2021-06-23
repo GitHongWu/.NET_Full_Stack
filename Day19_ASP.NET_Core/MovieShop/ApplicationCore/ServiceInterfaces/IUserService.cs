@@ -18,6 +18,14 @@ namespace ApplicationCore.ServiceInterfaces
         Task<PurchaseResponseModel> GetAllPurchasesForUser(int id);
         Task<User> GetUser(string email);
         Task<UserRegisterResponseModel> GetUserDetails(int id);
+        Task AddFavorite(FavoriteRequestModel favoriteRequest);
+        Task RemoveFavorite(FavoriteRequestModel favoriteRequest);
+        Task<bool> FavoriteExists(int id, int movieId);
+        Task AddMovieReview(ReviewRequestModel reviewRequest);
+        Task UpdateMovieReview(ReviewRequestModel reviewRequest);
+        Task DeleteMovieReview(int userId, int movieId);
+        Task<FavoriteResponseModel> GetAllFavoritesForUser(int id);
+        Task<ReviewResponseModel> GetAllReviewsByUser(int id);
 
         // delete
         // EditUser

@@ -21,6 +21,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using ApplicationCore.Entities;
 
 namespace MovieShop.API
 {
@@ -57,6 +58,9 @@ namespace MovieShop.API
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+            services.AddScoped<IAsyncRepository<Review>, EfRepository<Review>>();
+            services.AddScoped<IAsyncRepository<Favorite>, EfRepository<Favorite>>();
+
             services.AddHttpContextAccessor();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(

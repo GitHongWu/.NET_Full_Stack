@@ -126,5 +126,23 @@ namespace Infrastructure.Repositories
             var movies = await _dbContext.Movies.Take(25).ToListAsync();
             return movies;
         }
+
+        public async Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId)
+        {
+            var totalMoviesCountByGenre =
+                await _dbContext.Genres.Include(g => g.Movies).Where(g => g.Id == genreId).SelectMany(g => g.Movies)
+                    .CountAsync();
+
+            if (totalMoviesCountByGenre == 0)
+            {
+                throw new NotFoundException("NO Movies found for this genre");
+            }
+            var movies = await _dbContext.Genres.Include(g => g.Movies).Where(g => g.Id == genreId)
+                .SelectMany(g => g.Movies)
+                .OrderByDescending(m => m.Revenue)
+                .Take(25).ToListAsync();
+
+            return movies;
+        }
     }
 }
