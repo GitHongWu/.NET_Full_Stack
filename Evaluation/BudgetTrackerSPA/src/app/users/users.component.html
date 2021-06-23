@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Description</th>
+        <th scope="col">Date</th>
+        <th scope="col">Remarks</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let el of userDetails">
+            <th scope="row">{{el.type}}</th>
+            <td>$ {{el.amount}}</td>
+            <td>{{el.description}}</td>
+            <td>{{el.date}}</td>
+            <td>{{el.remarks}}</td>
+        </tr>
+    </tbody>
+  </table>

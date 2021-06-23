@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Email</th>
+        <th scope="col">FullName</th>
+        <th scope="col">JoinedOn</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr mdbTableCol *ngFor="let el of userProfiles">
+            <th scope="row">{{el.id}}</th>
+            <td class="text-primary" [routerLink]="['Users/Details/', el.id]" >{{el.fullName}}</td>
+            <td>{{el.email}}</td>
+            <td>{{el.joinedOn}}</td>
+        </tr>
+    </tbody>
+  </table>
